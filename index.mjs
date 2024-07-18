@@ -16,10 +16,13 @@ app.post("/hello", (req, res) => {
   }
 
   axios
-    .post(`https://api.telegram.org/bot${process.env.TELEGRAM_API}/hello`, {
-      chat_id: message.chat.id,
-      text: "Polo!!",
-    })
+    .post(
+      `https://api.telegram.org/bot${process.env.TELEGRAM_API}/sendMessage`,
+      {
+        chat_id: message.chat.id,
+        text: "Polo!!",
+      }
+    )
     .then((res) => {
       // We get here if the message was successfully posted
       console.log("Message posted");
